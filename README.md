@@ -5,12 +5,18 @@ Further reading
 * [wikipedia](https://en.wikipedia.org/wiki/Google_Authenticator)
 * [archwiki](https://wiki.archlinux.org/index.php/Google_Authenticator)
 
+## Important Notes
+This tutorial does not cover using Two-Factor-Authentification on systems with “home folder encryption” that encrypted your entire home directory until you enter your password. Specifically, this uses ecryptfs. However, because the PAM software depends on a Google Authenticator file stored in your home directory by default, the encryption interferes with the PAM reading the file unless you ensure it’s available in unencrypted form to the system before you log in. Consult the [README](https://github.com/google/google-authenticator/blob/master/libpam/README) for more information on avoiding this problem if your’e still using the deprecated home directory encryption options. However Full-Disk-Encryption is a non issue, because the filesystem is decrypted at the point the pam module authentificates the user and it just works normally.
+
+It is highly recommendet to install a ntp client on your system, because the whole key-generation depends on synchronized time. If you phone and PC time differe by to much the generated codes won't work.
+
 ## Requirements
 1. Manjaro Linux
 2. Smartphone (Android / iPhone )
 
-## Install Google-Authenticator
+## Install
 * Manjaro
+  * `pacman -S ntp`
   * `yaourt libpam-google-authenticator`
 * Phone
   * Android (PlayStore): **FreeOTP**
@@ -31,7 +37,9 @@ Go through this process for each user account that uses your computer. For examp
 
 ![phone app](./img/ga_app.png)
 
-![rolling codes example](./img/example.png)
+Example of generates One-Time passwords:
+
+<img src="./img/example.png" width="300"/>
 
 ## Remote Login
 **Warning:** If you do all configuration via SSH do not close the session before you tested that everything is working, else you may lock yourself out. Furthermore consider generating the key file before activating the PAM.
@@ -92,6 +100,16 @@ session     include     system-login
 -session    optional    pam_gnome_keyring.so auto_start
 ```
 
+At the next Login you are greeted with your default Login-Mask, just enter your regular password:
+
+![password login](./img/password_login.png)
+
+After pressing the `Enter` key or pushing the `Log In` button you will be prompted for the One-Time password regardless eather you password was correct or not before:
+
+![verification code](./img/verification_login.png)
+
+After entering the Verification Code generated on your phone and pressing the `Enter` key or pushing the `Log In` button you are logged in.
+
 ## Local Virtual Terminal (eg. `ALT+F2`)
 
 Securing SSH and the Graphical-Login still leaves us open to Logins via the Virtual Terminal eg. `ALT+F2` on the Graphical Login-Mask. To secure this login as well with two-facto authentification we need to edit the `/etc/pam.d/login` file and add `pam_google_authenticator.so` below `system-local-login`:
@@ -108,3 +126,8 @@ account    include      system-local-login
 session    include      system-local-login
 
 ```
+
+Example local Login `ALT+F2`:
+
+![verification code](./img/vt_example.png)
+

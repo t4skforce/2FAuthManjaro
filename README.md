@@ -31,6 +31,8 @@ Go through this process for each user account that uses your computer. For examp
 
 ![phone app](./img/ga_app.png)
 
+![rolling codes example](./img/example.png)
+
 ## Remote Login
 **Warning:** If you do all configuration via SSH do not close the session before you tested that everything is working, else you may lock yourself out. Furthermore consider generating the key file before activating the PAM.
 

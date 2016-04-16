@@ -5,14 +5,14 @@ Further reading
 * [wikipedia](https://en.wikipedia.org/wiki/Google_Authenticator)
 * [archwiki](https://wiki.archlinux.org/index.php/Google_Authenticator)
 
+## Requirements
+1. Manjaro Linux
+2. Smartphone (Android / iPhone )
+
 ## Important Notes
 This tutorial does not cover using Two-Factor-Authentification on systems with “home folder encryption” that encrypted your entire home directory until you enter your password. Specifically, this uses ecryptfs. However, because the PAM software depends on a Google Authenticator file stored in your home directory by default, the encryption interferes with the PAM reading the file unless you ensure it’s available in unencrypted form to the system before you log in. Consult the [README](https://github.com/google/google-authenticator/blob/master/libpam/README) for more information on avoiding this problem if your’e still using the deprecated home directory encryption options. However Full-Disk-Encryption is a non issue, because the filesystem is decrypted at the point the pam module authentificates the user and it just works normally.
 
 It is highly recommendet to install a ntp client on your system, because the whole key-generation depends on synchronized time. If you phone and PC time differe by to much the generated codes won't work. [manjaro-wiki](https://wiki.manjaro.org/index.php?title=System_Time_Setting)
-
-## Requirements
-1. Manjaro Linux
-2. Smartphone (Android / iPhone )
 
 ## Install
 * Manjaro

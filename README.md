@@ -1,5 +1,5 @@
 # Two Factor Authentication on Manjaro (with Google-Authenticator)
-Setup Google-Authenticator Two-Factor-Authentification on Manjaro Linux. Event tough the Application was initially developed by Google it does no phone home for providing the two-factor auth service. The application supports the HMAC-Based One-time Password (HOTP) algorithm specified in [RFC 4226](https://tools.ietf.org/html/rfc4226)  and the Time-based One-time Password (TOTP) algorithm specified in [RFC 6238](https://tools.ietf.org/html/rfc6238). The Source-Code for the Linux Project can be found at [github/google-authenticator](https://github.com/google/google-authenticator).
+Setup Google-Authenticator Two-Factor-Authentification on Manjaro Linux. Even tough the Application was initially developed by Google it does no phone home for providing the two-factor auth service. The application supports the HMAC-Based One-time Password (HOTP) algorithm specified in [RFC 4226](https://tools.ietf.org/html/rfc4226)  and the Time-based One-time Password (TOTP) algorithm specified in [RFC 6238](https://tools.ietf.org/html/rfc6238). The Source-Code for the Linux Project can be found at [github/google-authenticator](https://github.com/google/google-authenticator).
 
 Further reading
 * [wikipedia](https://en.wikipedia.org/wiki/Google_Authenticator)
@@ -104,7 +104,7 @@ At the next Login you are greeted with your default Login-Mask, just enter your 
 
 ![password login](./img/password_login.png)
 
-After pressing the `Enter` key or pushing the `Log In` button you will be prompted for the One-Time password regardless eather you password was correct or not before:
+After pressing the `Enter` key or pushing the `Log In` button you will be prompted for the One-Time password regardless if your password was correct or not before:
 
 ![verification code](./img/verification_login.png)
 
